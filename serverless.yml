@@ -1,0 +1,47 @@
+service: dynamoose-test
+
+plugins:
+  - serverless-bundle
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  memorySize: 256
+  stage: ${opt:stage, 'dev'}
+  region: eu-west-1
+  environment:
+    TABLE_NAME: figures-table
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+        - dynamodb:CreateTable
+        - dynamodb:DescribeTable
+      Resource:
+        - 'arn:aws:dynamodb:eu-west-1:299579995471:table/figures-table'
+        - 'arn:aws:dynamodb:eu-west-1:299579995471:table/figures-table/index/*'
+
+functions:
+  getFigures:
+    handler: src/handlers/get-figures.handler
+    events:
+      - http:
+          method: GET
+          path: /get-figures/{companyId}
+  addFigures:
+    handler: src/handlers/add-figures.handler
+    events:
+      - http:
+          method: POST
+          path: /add-figures/{companyId}
+  listFigures:
+    handler: src/handlers/list-figures.handler
+    events:
+      - http:
+          method: GET
+          path: /list-figures

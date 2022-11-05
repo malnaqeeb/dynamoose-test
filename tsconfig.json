@@ -1,0 +1,38 @@
+{
+  "include": [
+    "src/**/*.*.ts",
+    "src/**/*.ts"
+  ],
+  "compilerOptions": {
+    "typeRoots": [
+      "./typings",
+      "./node_modules/@types"
+    ],
+    "rootDir": ".",
+    "baseUrl": "./src",
+    "target": "es2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext.asynciterable",
+      "esnext",
+      "es2020"
+    ],
+    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "strict": true,
+    "declaration": true,
+    "resolveJsonModule": true,
+    "strictPropertyInitialization": false
+  }
+}

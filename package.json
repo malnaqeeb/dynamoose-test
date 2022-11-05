@@ -1,0 +1,38 @@
+{
+  "name": "dynamoose",
+  "version": "1.0.0",
+  "description": "test",
+  "private": true,
+  "license": "UNLICENSED",
+  "author": "ecto-1",
+  "engines": {
+    "node": "14.x.x"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.108",
+    "@types/jest": "^29.2.2",
+    "@types/uuid": "^8.3.4",
+    "aws-sdk-client-mock": "^2.0.0",
+    "esbuild": "^0.15.12",
+    "serverless": "^3.23.0",
+    "serverless-esbuild": "^1.33.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@aws-sdk/lib-dynamodb": "^3.204.0",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-typescript": "^7.18.6",
+    "aws-sdk": "^2.1248.0",
+    "dynamoose": "^3.1.0",
+    "dynamoose-logger": "^3.1.0",
+    "i": "^0.3.7",
+    "install": "^0.13.0",
+    "jest": "^26.6.3",
+    "joi": "^17.7.0",
+    "npm": "^8.19.3",
+    "prettier": "^2.7.1",
+    "serverless-aws-terraform-outputs": "^0.1.0",
+    "serverless-bundle": "^5.5.0",
+    "uuid": "^9.0.0"
+  }
+}
