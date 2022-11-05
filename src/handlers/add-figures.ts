@@ -14,7 +14,7 @@ export async function addFigures(request: any): Promise<AddFiguresResponse> {
     // const repository = new FiguresRepository()
     const fileId = uuidv4()
     const id = uuidv4()
-    // const companyId = uuidv4()
+    // const companyId = uuidv4()1
     // const result = await repository.addFigures(companyId, fileId, id)
     const result = await addFigures({ companyId, fileId, id })
     return {
