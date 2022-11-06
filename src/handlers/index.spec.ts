@@ -4,6 +4,8 @@ import * as dynamoose from 'dynamoose'
 import type { DynamoDB } from '@aws-sdk/client-dynamodb'
 
 import { addFigures } from './add-figures'
+import { APIGatewayProxyEvent } from 'aws-lambda'
+import { listFigures } from './list-figures'
 
 beforeEach(() => {
     dynamoose.Table.defaults.set({ create: false, waitForActive: false })
@@ -35,7 +37,17 @@ it('should query dynamodb correctly', async () => {
             },
         }
     }
-
+    const query = () => {
+        return {
+            Items: [
+                {
+                    companyId: { S: companyId },
+                    fileId: { S: fileId },
+                    id: { S: id },
+                },
+            ],
+        }
+    }
     const dynamoClient = {
         getItem,
         putItem,
@@ -51,6 +63,7 @@ it('should query dynamodb correctly', async () => {
 
     const figuresByCompanyId = await getFigures(request)
     const createFigures = await addFigures(request)
+    const listFiguresByFileId = await listFigures(request)
 
     expect(figuresByCompanyId).toMatchInlineSnapshot(`
         Object {
@@ -64,4 +77,5 @@ it('should query dynamodb correctly', async () => {
           "statusCode": 200,
         }
     `)
+    expect(listFiguresByFileId).toMatchInlineSnapshot()
 })

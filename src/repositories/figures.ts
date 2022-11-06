@@ -49,14 +49,17 @@ export const createFigures = async (companyId: string, fileId: string): Promise<
 }
 
 // query on GSI
-export const listFiguresByFileId = async (fileId: string): Promise<Figures> => {
+export const listFiguresByFileId = async (fileId: string): Promise<Figures[]> => {
     const filter = new dynamoose.Condition().where('fileId').eq(fileId)
+    const result = await figuresRepository.query(filter).limit(50).exec()
 
-    try {
-        const item = await figuresRepository.query(filter).exec()
-        const validatedResponse = validate<Figures>(schema, item)
-        return validatedResponse
-    } catch (error) {
-        throw new Error(`Error while getting the figures ${fileId}`)
+    let nextPage: Figures[] = []
+    if (result.lastKey) {
+        //TODO find dynamic method to query instead of duplicate the code
+        nextPage = await figuresRepository.query(filter).startAt(result.lastKey).limit(50).exec()
     }
+    nextPage = nextPage.concat(result)
+    const res = nextPage.map((item) => validate<Figures>(schema, item))
+
+    return res
 }

@@ -1,6 +1,6 @@
 import { listFiguresByFileId } from '../repositories/figures'
 
-async function listFigures(request: AWSLambda.APIGatewayProxyEvent) {
+export async function listFigures(request: AWSLambda.APIGatewayProxyEvent) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const { fileId } = request.pathParameters
