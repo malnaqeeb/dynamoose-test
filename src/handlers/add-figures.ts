@@ -1,5 +1,5 @@
 // import FiguresRepository from '../repositories/figures'
-import { Figures } from 'repositories/figures'
+import { createFigures, Figures } from '../repositories/figures'
 import { v4 as uuidv4 } from 'uuid'
 
 interface AddFiguresResponse {
@@ -13,10 +13,10 @@ export async function addFigures(request: any): Promise<AddFiguresResponse> {
 
     // const repository = new FiguresRepository()
     const fileId = uuidv4()
-    const id = uuidv4()
+
     // const companyId = uuidv4()1
     // const result = await repository.addFigures(companyId, fileId, id)
-    const result = await addFigures({ companyId, fileId, id })
+    const result = await createFigures(companyId, fileId)
     return {
         statusCode: 200,
         body: JSON.stringify({ result }),

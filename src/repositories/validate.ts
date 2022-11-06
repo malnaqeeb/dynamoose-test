@@ -11,5 +11,6 @@ export function validate<T>(schema: AnySchema, input: unknown, options?: Validat
 export const schema = Joi.object({
     companyId: Joi.string().required(),
     fileId: Joi.string().required(),
-    id: Joi.string().required(),
+    // it store the time as epoch but retrieve as Date object
+    expiredAt: Joi.alternatives(Joi.number(), Joi.object()),
 })

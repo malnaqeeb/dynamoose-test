@@ -10,7 +10,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: eu-west-1
   environment:
-    TABLE_NAME: figures-table
+    TABLE_NAME: figures-table-v2
   iamRoleStatements:
     - Effect: 'Allow'
       Action:
@@ -23,8 +23,8 @@ provider:
         - dynamodb:CreateTable
         - dynamodb:DescribeTable
       Resource:
-        - 'arn:aws:dynamodb:eu-west-1:299579995471:table/figures-table'
-        - 'arn:aws:dynamodb:eu-west-1:299579995471:table/figures-table/index/*'
+        - 'arn:aws:dynamodb:eu-west-1:299579995471:table/figures-table-v2'
+        - 'arn:aws:dynamodb:eu-west-1:299579995471:table/figures-table-v2/index/*'
 
 functions:
   getFigures:
