@@ -51,6 +51,7 @@ it('should query dynamodb correctly', async () => {
     const dynamoClient = {
         getItem,
         putItem,
+        query,
     } as unknown as DynamoDB
 
     dynamoose.aws.ddb.set(dynamoClient)
@@ -77,5 +78,10 @@ it('should query dynamodb correctly', async () => {
           "statusCode": 200,
         }
     `)
-    expect(listFiguresByFileId).toMatchInlineSnapshot()
+    expect(listFiguresByFileId).toMatchInlineSnapshot(`
+        Object {
+          "body": "{\\"result\\":[{\\"companyId\\":\\"company-id\\",\\"fileId\\":\\"file-id\\"}]}",
+          "statusCode": 200,
+        }
+    `)
 })
