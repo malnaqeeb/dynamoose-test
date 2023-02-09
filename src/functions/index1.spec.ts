@@ -72,12 +72,13 @@ it('should query dynamodb correctly', async () => {
           "statusCode": 200,
         }
     `)
-    expect(createFigures).toMatchInlineSnapshot(`
-        Object {
-          "body": "{\\"result\\":{\\"companyId\\":\\"company-id\\",\\"fileId\\":\\"39444ea6-278e-4035-a167-1ab38de27bef\\",\\"expiredAt\\":1667770397}}",
-          "statusCode": 200,
-        }
-    `)
+    expect(JSON.parse(createFigures.body)).toEqual({
+        result: {
+            companyId,
+            fileId: expect.any(String),
+            expiredAt: expect.any(Number),
+        },
+    })
     expect(listFiguresByFileId).toMatchInlineSnapshot(`
         Object {
           "body": "{\\"result\\":[{\\"companyId\\":\\"company-id\\",\\"fileId\\":\\"file-id\\"}]}",

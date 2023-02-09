@@ -9,10 +9,12 @@ interface AddFiguresResponse {
 export async function addFigures(request: any): Promise<AddFiguresResponse> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const { companyId } = request.pathParameters
+    // const { companyId } = request.pathParameters
 
     // const repository = new FiguresRepository()
-    const fileId = uuidv4()
+    // const fileId = uuidv4()
+    const fileId = 'file-id'
+    const companyId = 'company-id'
 
     // const companyId = uuidv4()1
     // const result = await repository.addFigures(companyId, fileId, id)

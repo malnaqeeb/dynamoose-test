@@ -28,20 +28,20 @@ provider:
 
 functions:
   getFigures:
-    handler: src/handlers/get-figures.handler
+    handler: src/functions/get-figures.handler
     events:
       - http:
           method: GET
           path: /get-figures/{companyId}
   addFigures:
-    handler: src/handlers/add-figures.handler
+    handler: src/functions/add-figures.handler
     events:
       - http:
           method: POST
           path: /add-figures/{companyId}
   listFigures:
-    handler: src/handlers/list-figures.handler
+    handler: src/functions/list-figures.handler
     events:
       - http:
           method: GET
-          path: /list-figures
+          path: /list-figures/{fileId}
